@@ -1,0 +1,15 @@
+<%- include('header'); %>
+<%- include('toolbar', {section: 'main'}); %>
+<body>
+<div style="margin: 2%; display:flex">
+    <div style="float: left; width: 70%;">
+        <img src="<%= image %>" style="width: 95%;" class="img-responsive">
+        <h1 class="text-info"><%= l.translate('landing_title_1') %></h1>
+        <h2 style="margin-top: 5%;"><%= l.translate('landing_title_2') %></h2>
+    </div>
+    <%- include('request_form'); %>
+</div>
+<%- include('default_scripts'); %>
+<script src="javascripts/sendingForm.js"></script>
+</body>
+

@@ -1,0 +1,50 @@
+<nav class="navbar navbar-expand-lg <%= navbarTheme %> <%= toolbarColor %>">
+    <a class="navbar-brand"><%= domainName %></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="nav navbar-nav">
+            <li class="nav-item <%= section === 'main' ? '' : 'active' %>">
+                <a class="nav-link" href="/"><%= l.translate('toolbar_main') %><span
+                            class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item <%= section === 'books' ? '' : 'active' %>">
+                <a class="nav-link" href="/books"><%= l.translate('toolbar_books') %><span
+                            class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item <%= section === 'about' ? '' : 'active' %>">
+                <a class="nav-link" href="/about"><%= l.translate('toolbar_about') %><span
+                            class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item <%= section === 'admin' ? '' : 'active' %>">
+                <a class="nav-link" href="/admin"><%= l.translate('toolbar_admin') %><span
+                            class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+
+        <ul class="nav navbar-nav ml-auto">
+            <li class="nav-item" id="enRef">
+                <a class="nav-link " href="" onclick="document.cookie = 'lang=en;';">ENG<span
+                            class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item" id="uaRef">
+                <a class="nav-link" onclick="document.cookie = 'lang=ua;';" href="">UA</a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        function getCookie(name) {
+            var value = "; " + document.cookie;
+            var parts = value.split("; " + name + "=");
+            if (parts.length === 2) return parts.pop().split(";").shift();
+        }
+
+        console.log(getCookie('lang'));
+        if (getCookie('lang') === 'ua') {
+            document.getElementById('uaRef').className += ' active';
+        } else {
+            document.getElementById('enRef').className += ' active';
+        }
+    </script>
+</nav>

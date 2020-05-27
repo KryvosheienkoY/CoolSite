@@ -1,0 +1,90 @@
+<%- include('header'); %>
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<%- include('default_scripts'); %>
+<script src="javascripts/sendingForm.js"></script>
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+<%- include('toolbar', {section: 'books'}); %>
+<body>
+<div style="margin: 2%; display:flex">
+    <div style="float: left; width: 70%;">
+        <h1 class="text-center"><%= l.translate('books_title') %></h1>
+        <div id="content" style="width: 90%;"></div>
+    </div>
+    <script type="text/babel">
+        const divStyle = {
+            borderRadius: 5,
+            padding: 5,
+            marginBottom: 10,
+            width: "100%",
+            backgroundColor: "#E0FFFF",
+        };
+
+        console.log("reading babel script");
+
+        class Book extends React.Component {
+            render() {
+                return <div style={divStyle}>
+                    <p><strong><%= l.translate('book_author') %>: </strong> {this.props.author} </p>
+                    <p><strong><%= l.translate('book_name') %>: </strong> {this.props.title} </p>
+                    <p>
+                        <details class="text-primary">
+                            <summary><%= l.translate('book_more') %>...</summary>
+                            {this.props.description}
+                        </details>
+                    </p>
+                </div>;
+            }
+        }
+
+        class Content extends React.Component {
+
+            render() {
+                let test = [];
+                let authorBook;
+                let nameBook;
+                let descriptionBook;
+                for (let i = 0; i < this.props.books.length; i++) {
+                    if(this.props.books[i].authorua!==undefined && this.props.books[i].authorua!==null) {
+                        authorBook= this.props.books[i].authorua;
+                        nameBook = this.props.books[i].bookNameua;
+                        descriptionBook = this.props.books[i].descriptionua;
+                    }
+                    else{
+                        authorBook = this.props.books[i].authoren;
+                        nameBook = this.props.books[i].bookNameen;
+                        descriptionBook = this.props.books[i].descriptionen;
+                    }
+
+                    test.push(<Book author={authorBook} title={nameBook} description={descriptionBook}/>);
+                    console.log(nameBook);
+                }
+                return test;
+            }
+        }
+
+        $(function () {
+            $(document).ready(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: '/book_list',
+                    success: function (response) {
+                        console.log(response);
+                        ReactDOM.render(
+                            <Content books={response.books}/>,
+                            document.getElementById("content")
+                        );
+                    }
+                });
+            });
+        });
+    </script>
+
+
+    <%- include('request_form'); %>
+</div>
+</body>

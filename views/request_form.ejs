@@ -1,0 +1,18 @@
+<div style="height: max-content; float: right;  border: 3px solid #a3daff; border-radius: 10px; width: 29%; padding: 1%; ">
+    <form style="width: 100%;" action="/createRequest" method="post">
+        <p style="font-weight: bold; text-align: center"><%= l.translate('books_request_title') %></p>
+        <div class="form-group">
+            <label for="name"><%= l.translate('books_request_name') %></label>
+            <input type="text"  name="name"  class="form-control" id="name" >
+        </div>
+        <div class="form-group">
+            <label for="email"><%= l.translate('books_request_email') %></label>
+            <input type="text"  name="email" class="form-control" id="email">
+        </div>
+        <div class="form-group">
+            <label for="comment"><%= l.translate('books_request_comment') %></label>
+            <textarea rows="2" cols="45" name="comment" class="form-control" id="comment"></textarea>
+        </div>
+        <button type="submit" class="form-control btn btn-primary" id="create_request_button" style=" width: 100%; margin-bottom: 3%" value="<%= l.translate('books_request_submit') %>"><%= l.translate('books_request_submit') %></button>
+    </form>
+</div>

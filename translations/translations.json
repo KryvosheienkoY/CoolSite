@@ -1,0 +1,78 @@
+{
+  "landing_title_1": {
+    "en": "The Coolest Books Site",
+    "ua": "Найкрутіший Книжний Сайт"
+  },
+  "landing_title_2": {
+    "en": "We help you get only books that YOU need",
+    "ua": "Ми допоможемо вам отримати ті книги, які ВАМ потрібні"
+  },
+  "toolbar_main": {
+    "en": "Main",
+    "ua": "Головна"
+  },
+  "toolbar_books": {
+    "en": "Books",
+    "ua": "Книги"
+  },
+  "toolbar_about": {
+    "en": "About us",
+    "ua": "Про нас"
+  },
+  "toolbar_admin": {
+    "en": "Admin",
+    "ua": "Адмін"
+  },
+  "books_title": {
+    "en": "Books",
+    "ua": "Книги"
+  },
+  "books_request_title": {
+    "en": "Request books",
+    "ua": "Подати заявку:"
+  },
+  "books_request_name": {
+    "en": "Name and surname:",
+    "ua": "Ім'я та прізвище:"
+  },
+  "books_request_email": {
+    "en": "Email:",
+    "ua": "Електронна пошта:"
+  },
+  "books_request_comment": {
+    "en": "Additional comment:",
+    "ua": "Коментарі:"
+  },
+  "books_request_submit": {
+    "en": "Submit",
+    "ua": "Відправити"
+  },
+  "about_h1": {
+    "en": "Cool site - is the best site!",
+    "ua": "Крутий сайт - найкращий сайт!"
+  },
+  "about_p1": {
+    "en": "Here you can easily order any book!",
+    "ua": "Тут ви з легкістю можете замовити будь-яку книгу!"
+  },
+  "about_p2": {
+    "en": "Order books just in one click!",
+    "ua": "Замовляйте книги лише в один клік!"
+  },
+  "book_name": {
+    "en": "Name",
+    "ua": "Назва"
+  },
+  "book_author": {
+    "en": "Author",
+    "ua": "Автор"
+  },
+  "book_more": {
+    "en": "More",
+    "ua": "Детальніше"
+  },
+  "books_request_status": {
+    "en": "Status",
+    "ua": "Статус"
+  }
+}

@@ -1,0 +1,15 @@
+<%- include('header'); %>
+<%- include('toolbar', {section: 'about'}); %>
+<body>
+<div style="margin: 2%; display:flex">
+    <div style="float: left; width: 70%;">
+        <h1><%= l.translate('about_h1') %></h1>
+        <p><%= l.translate('about_p1') %></p>
+        <p><%= l.translate('about_p2') %></p>
+    </div>
+    <%- include('request_form'); %>
+</div>
+<%- include('default_scripts'); %>
+<script src="javascripts/sendingForm.js"></script>
+</body>
+

@@ -1,0 +1,78 @@
+<%- include('header'); %>
+
+<script crossorigin src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.25.0/babel.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+<%- include('default_scripts'); %>
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+<%- include('toolbar', {section: 'admin'}); %>
+<body>
+<div style="margin: 2%; width: 80%" id="requestsContainer">
+    <script type="text/babel">
+        const divStyle = {
+            borderRadius: 5,
+            padding: 5,
+            marginBottom: 10,
+            width: "100%",
+            backgroundColor: "#E0FFFF",
+        };
+
+        console.log("reading babel script");
+
+        class Request extends React.Component {
+            render() {
+                return <div style={divStyle}>
+                    <p><strong><%= l.translate('books_request_name') %> </strong> {this.props.name} </p>
+                    <p><%= l.translate('books_request_email') %>  {this.props.email} </p>
+                    <p><%= l.translate('books_request_comment') %> {this.props.comments} </p>
+                    <p><%= l.translate('books_request_status') %>: {this.props.status} </p>
+
+                </div>;
+            }
+        }
+
+        class Content extends React.Component {
+
+            render() {
+                let test = [];
+                let name;
+                let email;
+                let comments;
+                let status;
+                for (let i = 0; i < this.props.requests.length; i++) {
+                    name= this.props.requests[i].name;
+                    email= this.props.requests[i].email;
+                    comments = this.props.requests[i].comments;
+                    if(this.props.requests[i].status===1)
+                        status="Сonfirmed";
+                    else
+                        status="Waiting for confirm";
+                    test.push(<Request name={name} email={email} comments={comments} status={status}/>);
+                }
+                return test;
+            }
+        }
+
+        $(function () {
+            $(document).ready(function () {
+                $.ajax({
+                    type: 'GET',
+                    url: '/requests_list',
+                    success: function (response) {
+                        console.log(response);
+                        console.log("AJAX");
+                        ReactDOM.render(
+                            <Content requests={response.requests}/>,
+                            document.getElementById("requestsContainer")
+                        );
+                    }
+                });
+            });
+        });
+    </script>
+</div>
+<%- include('default_scripts'); %>
+</body>
